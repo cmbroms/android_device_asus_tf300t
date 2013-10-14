@@ -70,6 +70,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     tinymix \
     libaudioutils \
+    AutoParts_tfp \
     blobpack_tfp \
     mischelp \
     wifimacwriter \
