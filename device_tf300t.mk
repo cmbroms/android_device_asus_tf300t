@@ -25,6 +25,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.cardhu.cpu.rc:root/init.cardhu.cpu.rc \
     $(LOCAL_PATH)/ramdisk/fstab.cardhu:root/fstab.cardhu
 
+
 # Input device config files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
@@ -41,6 +42,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -63,10 +65,8 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs \
     audio.a2dp.default \
-    audio.r_submix.default \
     tinymix \
     libaudioutils \
-    AutoParts_tfp \
     blobpack_tfp \
     mischelp \
     wifimacwriter \
@@ -95,10 +95,6 @@ PRODUCT_COPY_FILES += \
     device/asus/tf300t/media_codecs.xml:system/etc/media_codecs.xml \
     device/asus/tf300t/media_profiles.xml:system/etc/media_profiles.xml \
     device/asus/tf300t/audio_policy.conf:system/etc/audio_policy.conf
-
-# wifi files
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # gps config files
 PRODUCT_COPY_FILES += \
