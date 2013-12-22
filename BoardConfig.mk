@@ -15,16 +15,7 @@
 #
 
 BOARD_USES_GENERIC_AUDIO := false
-BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
 USE_CAMERA_STUB := false
-
-# Camera options
-COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
-
-# Cardhu HAL libraries
-BOARD_HAL_STATIC_LIBRARIES := \
-    libdumpstate.cardhu \
-    libhealthd.cardhu
 
 # inherit from the proprietary version
 -include vendor/asus/tf300t/BoardConfigVendor.mk
@@ -47,6 +38,7 @@ TARGET_CPU_VARIANT := cortex-a9
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
 ARCH_ARM_USE_NON_NEON_MEMCPY := true
+
 NEED_WORKAROUND_CORTEX_A9_745320 := true
 
 # Boot/Recovery image settings  
@@ -54,11 +46,9 @@ BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE :=
 
-# Video settings
+# EGL settings
 BOARD_EGL_CFG := device/asus/tf300t/egl.cfg
 USE_OPENGL_RENDERER := true
-BOARD_HAVE_PIXEL_FORMAT_INFO := true
-TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # Misc display settings
 BOARD_USE_SKIA_LCDTEXT := true
@@ -70,6 +60,9 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUEDROID_VENDOR_CONF := device/asus/tf300t/bluetooth/vnd_tf300t.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/asus/tf300t/bluetooth
 
+# Support for dock battery
+TARGET_HAS_DOCK_BATTERY := true
+
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
@@ -80,6 +73,7 @@ BOARD_WLAN_DEVICE           := bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd_29/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/system/vendor/firmware/bcm4329/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/bcm4329/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_P2P     := "/system/vendor/firmware/bcm4329/fw_bcmdhd_p2p.bin"
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
@@ -99,36 +93,24 @@ TARGET_KERNEL_CONFIG := tf300t_cm10_defconfig
 # Custom Tools
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/asus/tf300t/releasetools/tf300t_ota_from_target_files
 
-# SELinux Defines
+# SELinux policies
 BOARD_SEPOLICY_DIRS := \
-    device/asus/tf300t/sepolicy
+    device/asus/tf300t/selinux
 
 BOARD_SEPOLICY_UNION := \
     file_contexts \
-    genfs_contexts \
-    app.te \
-    bdaddwriter.te \
-    device.te \
-    drmserver.te \
-    init_shell.te \
     file.te \
-    rild.te \
-    sensors_config.te \
-    shell.te \
-    surfaceflinger.te \
-    system.te \
-    zygote.te
+    device.te \
+    domain.te
 
-# CMHW
 BOARD_HARDWARE_CLASS := device/asus/tf300t/cmhw/
 
 # Recovery Options
 BOARD_CUSTOM_BOOTIMG_MK := device/asus/tf300t/recovery/recovery.mk
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
+TARGET_RECOVERY_INITRC := device/asus/tf300t/recovery/init.rc
 BOARD_HAS_SDCARD_INTERNAL := true
 TARGET_RECOVERY_FSTAB := device/asus/tf300t/ramdisk/fstab.cardhu
 RECOVERY_FSTAB_VERSION := 2
-BOARD_RECOVERY_SWIPE := true
-
 
