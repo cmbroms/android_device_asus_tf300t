@@ -27,6 +27,7 @@
     <string-array translatable="false" name="networkAttributes">
         <item>"wifi,1,1,2,-1,true"</item>
         <item>"bluetooth,7,7,0,-1,true"</item>
+        <item>"wifi_p2p,13,1,0,-1,true"</item>
         <item>"ethernet,9,9,9,-1,true"</item>
     </string-array>
 
@@ -151,28 +152,14 @@
     <integer name="config_lidOpenRotation">0</integer>
     <integer name="config_lidKeyboardAccessibility">1</integer>
 
-    <string name="config_deviceKeyHandlerLib" translatable="false">
-        /system/framework/com.cyanogenmod.asusdec.jar</string>
-    <string name="config_deviceKeyHandlerClass" translatable="false">
-        com.cyanogenmod.asusdec.KeyHandler</string>
+    <bool name="config_hasDockBattery">true</bool>
+    <string name="config_deviceHandlersLib" translatable="false">/system/framework/com.cyanogenmod.asusdec.jar</string>
+    <string name="config_deviceDockBatteryHandlerClass" translatable="false">com.cyanogenmod.asusdec.DockBatteryHandler</string>
+    <string name="config_deviceKeyHandlerClass" translatable="false">com.cyanogenmod.asusdec.KeyHandler</string>
+
+    <bool name="config_screenOffAnimation">false</bool>
 
    <bool name="config_showNavigationBar">true</bool>
    <integer name="config_multiuserMaximumUsers">8</integer>
-
-    <!-- Defines the system property to set for performance profile xe: sys.cpu.modes. Leave it
-         blank if the device do not support performance profiles -->
-    <string name="config_perf_profile_prop" translatable="false">sys.cpu.mode</string>
-
-    <!-- When config_perf_profile_prop is defined, this value MUST be the index of
-         one of the listes values in frameworks/base/core/res/res/values/cm_arrays.xml
-         for "perf_profile_values" array. Leave it blank if the device do not support
-         performance profiles  -->
-    <string name="config_perf_profile_default_entry" translatable="false">1</string>
-
-    <!-- Enable lockscreen translucent decor by default -->
-    <bool name="config_enableLockScreenTranslucentDecor">true</bool>
-
-    <!-- If this is true, the screen will fade off. -->
-    <bool name="config_animateScreenLights">false</bool>
 
 </resources>
